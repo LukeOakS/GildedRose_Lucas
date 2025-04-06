@@ -7,27 +7,26 @@ class GildedRose(object):
 
     def update_quality(self):
         for item in self.items:
-            if item.quality >= 0 and item.quality <= 50:
 
-                if item.quality < 50:
-                    if item.name == "Aged Brie":
-                        self.__handle_aged_brie(item)
+            if item.quality < 50:
+                if item.name == "Aged Brie":
+                    self.__handle_aged_brie(item)
 
-                    elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        self.__handle_backstage(item)
-                
-                    elif item.name == "Sulfuras, Hand of Ragnaros":
-                        self.__handle_sulfuras(item)
-                    
-                    elif item.name == "Conjured Mana Cake":
-                        if item.quality > 0:
-                            self.__handle_conjured(item)
-                    
-                    elif item.quality != 0:
-                        item.quality -= 1
-                        if item.sell_in < 0 and item.quality > 0:
-                            item.quality -= 1
+                elif item.name == "Backstage passes to a TAFKAL80ETC concert":
+                    self.__handle_backstage(item)
             
+                elif item.name == "Sulfuras, Hand of Ragnaros":
+                    self.__handle_sulfuras(item)
+                
+                elif item.name == "Conjured Mana Cake":
+                    if item.quality > 0:
+                        self.__handle_conjured(item)
+                
+                elif item.quality != 0:
+                    item.quality -= 1
+                    if item.sell_in < 0 and item.quality > 0:
+                        item.quality -= 1
+        
                 item.sell_in -= 1
 
     def __handle_aged_brie(self, item):
